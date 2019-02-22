@@ -9,7 +9,7 @@ const (
 	O_DIRECT = syscall.O_DIRECT
 )
 
-var ErrNotSetDirectIO = errors.New("O_DIRECT flag is absents")
+var ErrNotSetDirectIO = errors.New("O_DIRECT flag is absent")
 
 func fcntl(fd uintptr, cmd uintptr, arg uintptr) (uintptr, error) {
 	r0, _, e1 := syscall.Syscall(syscall.SYS_FCNTL, fd, uintptr(cmd), uintptr(arg))
