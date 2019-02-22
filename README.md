@@ -1,6 +1,6 @@
-# Linux DirectIO Writer
+# Linux Direct IO Writer
 
-DirectIO writer
+Direct IO writer using O_DIRECT
 
 Example:
 
