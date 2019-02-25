@@ -56,7 +56,7 @@ $ vmtouch /tmp/mini.iso
          Elapsed: 0.000356 seconds
 ```
 
-or using my `https://github.com/brk0v/cpager` to chech per cgroup pagecache usage:
+or using my `https://github.com/brk0v/cpager` to check per cgroup pagecache usage:
 
 ```bash
 $ sudo ~/go/bin/cpager /tmp/mini.iso
