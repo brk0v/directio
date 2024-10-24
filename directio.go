@@ -180,7 +180,10 @@ func (d *DirectIO) Write(p []byte) (nn int, err error) {
 		} else {
 			n = copy(d.buf[d.n:], p)
 			d.n += n
-			d.flush()
+			err = d.flush()
+			if err != nil {
+				return nn, err
+			}
 		}
 		nn += n
 		p = p[n:]
