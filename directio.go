@@ -15,6 +15,8 @@ const (
 	defaultBufSize = 8192
 )
 
+var _ io.WriteCloser = (*DirectIO)(nil)
+
 // align returns an offset for alignment.
 func align(b []byte) int {
 	return int(uintptr(unsafe.Pointer(&b[0])) & uintptr(blockSize-1))
@@ -195,4 +197,14 @@ func (d *DirectIO) Write(p []byte) (nn int, err error) {
 	nn += n
 
 	return nn, nil
+}
+
+func (d *DirectIO) Close() error {
+	if d.err == nil {
+		err := d.Flush()
+		if err != nil {
+			return err
+		}
+	}
+	return d.f.Close()
 }
